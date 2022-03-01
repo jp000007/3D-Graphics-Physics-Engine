@@ -10,7 +10,7 @@
 using namespace std;
 
 
-
+//Doubly Linked List, memory storage;
 class NewNode
 {
     private:
