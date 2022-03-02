@@ -23,7 +23,18 @@ int main(int argc, const char * argv[]) {
     case_one.test_add_rear(5);
     case_one.test_remove_front(2);
     case_one.test_remove_rear(3);
-        
 
+           BST b, *root = NULL;
+    root = b.Insert(root, 50);
+    b.Insert(root, 30);
+    b.Insert(root, 20);
+    b.Insert(root, 40);
+    b.Insert(root, 70);
+    b.Insert(root, 60);
+    b.Insert(root, 80);
+ 
+    b.Inorder(root);
     return 0;
-}
+};
+
+     

@@ -3,12 +3,149 @@
 //  HW4 pt2
 //
 //  Created by Jamie Parra on 6/18/21.
+
 #include <cstdlib>
 #include <iostream>
 #include <string.h>
 #include <math.h>
 using namespace std;
 
+class BST {
+	int data;
+	BST *left;
+    BST *right;
+
+public:
+	// Default constructor.
+	BST();
+
+	// Parameterized constructor.
+	BST(int);
+
+	// Insert function.
+	BST* Insert(BST*, int);
+
+	// Inorder traversal.
+	void Inorder(BST*);
+};
+
+// Default Constructor definition.
+BST ::BST()
+	: data(0)
+	, left(NULL)
+	, right(NULL)
+{
+}
+
+// Parameterized Constructor definition.
+BST ::BST(int value)
+{
+	data = value;
+	left = right = NULL;
+}
+
+// Insert function definition.
+BST* BST ::Insert(BST* t, int value)
+{
+	if (!t) {
+		// Insert the first node, if t is NULL.
+		return new BST(value);
+	}
+
+	// Insert data.
+	if (value > t->data) {
+		// Insert right node data, if the 'value'
+		// to be inserted is greater than 't' node data.
+
+		// Process right nodes.
+		t->right = Insert(t->right, value);
+	}
+	else {
+		// Insert left node data, if the 'value'
+		// to be inserted is greater than 't' node data.
+
+		// Process left nodes.
+		t->left = Insert(t->left, value);
+	}
+
+	// Return 't' node, after insertion.
+	return t;
+}
+
+// Inorder traversal function.
+// This gives data in sorted order.
+void BST ::Inorder(BST* t)
+{
+	if (!t) {
+		return;
+	}
+	Inorder(t->left);
+	cout << t->data << endl;
+	Inorder(t->right);
+}
+class Binary_Node
+{
+    public:
+    int data;
+    Binary_Node *left;
+    Binary_Node *right;
+
+    Binary_Node()
+    {
+        data = 0;
+        left = NULL;
+        right = NULL;
+    }
+
+    Binary_Node(int v)
+    {
+        data = v;
+        left = NULL;
+        right = NULL;
+    }
+    //friend class Binary_Search_Tree;
+
+};
+
+class Binary_Search_Tree
+{
+
+    Binary_Node search(Binary_Node *, int d);
+    Binary_Node insert(Binary_Node *, int d);
+    
+};
+
+Binary_Node * Binary_Search_Tree::search(Binary_Node *t, int d)
+{
+    Binary_Node *returnval = NULL;
+
+    if(t == NULL)
+        returnval = NULL;
+    else if(d < t->data)
+        return search(t->left, d);
+    else if(d > t->right)
+        return search(t->right, d);
+    else
+        return t;
+
+
+}
+
+Binary_Node * Binary_Search_Tree::insert(Binary_Node **t, int d)
+{
+    if( t == NULL)
+    {
+        *t = new Binary_Node;
+        (*t)->data;
+        (*t)->left = NULL;
+        (*t)->right = NULL;
+    }
+    else if (d < (*t)->data)
+        insert(((*t)->left), d);
+    else if (d > (*t)->data)
+        insert(((*t)->right), d);
+}
+ 
 
 //Doubly Linked List, memory storage;
 class NewNode
@@ -41,6 +178,7 @@ class Node
     void Size();
     void MakeEmpty();
     void display_data();
+
 
 };
 void Node::Insert_front(int data)
